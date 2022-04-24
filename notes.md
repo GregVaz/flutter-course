@@ -215,6 +215,18 @@ try{
 ### Clases y Constructores
 
 ```Dart
+class Point {
+  num x, y;
+
+  // Syntactic sugar for setting x and y
+  // before the constructor body runs
+  Point(this.x, this.y);
+}
+```
+
+## Herencia
+
+```Dart
 class Television {
   void turnOn() {
     _illuminateDisplay();
