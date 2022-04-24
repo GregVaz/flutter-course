@@ -1,4 +1,4 @@
-## Introducción
+# Introducción
 
 SDK de desarrollo de Google, pensado para el desarrollo nativo en diferentes dispositivos.
 
@@ -63,8 +63,187 @@ Engine (C++)
 
 - Skia - Dart - Text
 
-## Extras
+#### Extras
 
 Fuchsia
 
 Como idea par remplazo del SO Android
+
+# Dart
+
+> Considerado como lenguaje del futuro, por su operabilidad.
+
+[Documentación](https://dart.dev/)
+[Playground](https://dartpad.dartlang.org/?)
+
+- Dart puede ser usado en Flutter a traves de Flutter
+- Dart puede usar usado en web a traves de Angular como AngularDart
+- Dart puede ser utilizado para Aplicaciones de lado del servidor
+
+Google declara que Dart esta inspirado en React, en la programación reactiva.
+
+Dart utiliza el paradigma de programación orientada a objetos
+Asi como todo es es un Widget, todo es un objeto ya que heredan de la clase Object.
+
+```Dart
+class HolaMundo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Todo: implemet build
+    return null;
+  }
+}
+```
+
+Dart ofrece un [playground](https://dartpad.dartlang.org/?) para probar o realizar pruebas del lenguaje
+
+## Sintaxis
+
+> Todo es un objeto y todos heredan de la clase Object
+
+### Variables
+
+```Dart
+// No es fuertemente tipado
+var nombre = 'HolaMundo!';
+```
+
+```Dart
+// Se usa la palabra clave dynamic cuando pensamos que el tipo de dao cambiaŕa en el futuro
+dynamic nombre = 'HolaMundo';
+```
+
+```Dart
+// Podemos especificar el tipo de dato
+String nombre = 'Hola Mundo';
+
+```
+
+### Constantes
+
+```Dart
+// const debe tener asignado el valor en tiempo de compilación
+// final debe tener asignado el valor ent iempo de ejecución
+final nombre = 'Hola';
+final String nickaname = 'Greg';
+
+const nombre = 'Hola';
+const String nickname = 'Greg';
+```
+
+### Tipos de variables
+
+```Dart
+// numbers, int, double
+int x = 10;
+double y = 10.54;
+
+// strings: '' y "" son equivalentes
+// podemos usar var para la declaracion
+String palabra = 'word';
+var palabra = 'word';
+
+String palabraDoble  = "doble comilla";
+
+String textoMultilinea = '''un texto
+multilinea'''
+
+// booleans: true o false
+bool isDart = true;
+
+// lists
+var list = [11, 12, 13];
+
+// maps
+var dias = {
+  // key: value
+  'M': 'Monday',
+  'T': 'Thursday',
+  'W': 'Wednesday',
+}
+
+var meses = {
+  1: "enero",
+  2: "febrero",
+  3: "marzo"
+}
+```
+
+### Funciones
+
+```Dart
+// Las funciones pueden recibir entradas y generar salidas
+void myFunction(param1, param2, param3) {...}
+
+// La función main() Es el punto de entrada de una aplicacion
+void main() {
+  querySelector('#sample_text_id')
+  ..text = ("Click me")
+  ..onClick.listen(reverseText);
+}
+```
+
+### Control de flujo
+
+```Dart
+if and else
+for loops
+while and do-while loops
+break and continue
+switch and case
+assert
+```
+
+### Excepciones
+
+```Dart
+// Throw
+throw FormatException('Expected at least 1 section');
+
+// Catch
+try{
+
+} on OutOfBigBangException {
+
+} on Exception catch (e) {
+
+} catch(e) {
+
+}
+```
+
+### Clases y Constructores
+
+```Dart
+class Television {
+  void turnOn() {
+    _illuminateDisplay();
+    _activateIrSensor();
+  }
+  //..
+}
+
+class SmartTelevision extends Television {
+  void turnOn() {
+    super.turnOn();
+    _bootNetworkInterface();
+    _initializeMemory();
+    _upgradeApps();
+  }
+  // ..
+}
+
+// Sobreescritura de metodos
+
+class SmartTelevision extends Television {
+  @override
+  void turnOn() { ... }
+  // ...
+}
+```
+
+### Enum
+
+```Dart
+enum Color { red, green, blue }
+```
