@@ -259,3 +259,30 @@ class SmartTelevision extends Television {
 ```Dart
 enum Color { red, green, blue }
 ```
+
+# Estilo de programación
+
+> El estilo de programación que utiliza Flutter es declarativo
+> También va de la mano con el paradigma de programación funcional
+
+Fluter toma su principal inspiración de React Native (sobre componentes)
+
+Programación imperativa vs declarativa
+
+```dart
+// Imperative style
+b.setColor(red)
+b.clearChildren()
+ViewC c3 = new ViewC()
+b.add(c3)
+```
+
+- Para agregar un color al ViewB se haría a traves de una propiedad, se le asigna, asi también si se le quiere anañir un componente dentro de, se utiliza la propiedad `child`
+
+```dart
+// Declarative style
+return ViewB(
+  color: red,
+  child: ViewC(...),
+)
+```
