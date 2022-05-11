@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'description_place.dart';
+import 'review_list.dart';
+import 'gradient_background.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,16 +29,19 @@ class MyApp extends StatelessWidget {
         ),
         // home: // const MyHomePage(title: 'Flutter Demo Home Page'),
         home: Scaffold(
-            appBar: AppBar(
-              title: const Text("Hola Mundo"),
-            ),
-            body: new DescriptionPlace(
-              "Duwili Ella",
-              4,
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget lacinia velit. Aliquam tellus purus, volutpat eget sodales nec, gravida et velit. Nullam porttitor."
-            )
-        )
-    );
+          body: Stack(
+            children: [
+              ListView(
+                children: [
+                  DescriptionPlace("Duwili Ella", 4,
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget lacinia velit. Aliquam tellus purus, volutpat eget sodales nec, gravida et velit. Nullam porttitor."),
+                  ReviewList(),
+                ],
+              ),
+              GradientBackground(),
+            ],
+          ),
+        ));
   }
 }
 
