@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'cart_image.dart';
-class CardImageList extends StatelessWidget {
 
+class CardImageList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,5 +18,4 @@ class CardImageList extends StatelessWidget {
       ),
     );
   }
-
 }

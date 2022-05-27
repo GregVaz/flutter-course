@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'description_place.dart';
-import 'review_list.dart';
-import 'header.dart';
-import 'third_challenge/home_app.dart';
+import 'trips_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,21 +17,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: // const MyHomePage(title: 'Flutter Demo Home Page'),
-      // home: Scaffold(
-      //   body: Stack(
-      //     children: [
-      //       ListView(
-      //         children: [
-      //           DescriptionPlace("Duwili Ella", 4,
-      //               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget lacinia velit. Aliquam tellus purus, volutpat eget sodales nec, gravida et velit. Nullam porttitor."),
-      //           const ReviewList(),
-      //         ],
-      //       ),
-      //       Header(),
-      //     ],
-      //   ),
-      // ),
-      home: const HomeApp(),
+      home: Scaffold(
+        body: TripsBar(),
+      ),
     );
   }
 }

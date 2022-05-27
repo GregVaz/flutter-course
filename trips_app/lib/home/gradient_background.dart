@@ -9,7 +9,7 @@ class GradientBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 250.0,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
             Color(0xFF4268D3),
@@ -23,14 +23,14 @@ class GradientBackground extends StatelessWidget {
       ),
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 30.0,
           fontFamily: 'Lato',
           fontWeight: FontWeight.bold,
         ),
       ),
-      alignment: Alignment(-0.9, -0.6),
+      alignment: const Alignment(-0.9, -0.6),
     );
   }
 }
