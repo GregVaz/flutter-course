@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:trips_app/User/bloc/bloc_user.dart';
 import 'trips_bar.dart';
 
 void main() {
@@ -11,14 +13,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      // home: // const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: Scaffold(
-        body: TripsBar(),
+    return BlocProvider(
+      bloc: UserBloc(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: TripsBar(),
       ),
     );
   }
