@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'gradient_background.dart';
-import 'card_image_list.dart';
+import 'package:trips_app/widgets/gradient_background.dart';
+import 'package:trips_app/Place/ui/widgets/card_image_list.dart';
 
 class Header extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home/home_trips.dart';
-import 'profile/profile_trips.dart';
+import 'package:trips_app/Place/ui/screens/home_trips.dart';
+import 'package:trips_app/User/ui/screens/profile_trips.dart';
 import 'search_trips.dart';
 
 class TripsBar extends StatefulWidget {
