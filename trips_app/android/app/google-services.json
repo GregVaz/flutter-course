@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "756077842881",
+    "project_id": "trips-flutter-app-512bf",
+    "storage_bucket": "trips-flutter-app-512bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756077842881:android:9c2a60c5b29c6d091cdf40",
+        "android_client_info": {
+          "package_name": "com.example.trips_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "756077842881-5ruo5ltj0rvouokvtlhumqq12r5k8fh5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRRc_FXPYAVtdWWqxlhzOej1bfdiDE-KY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "756077842881-5ruo5ltj0rvouokvtlhumqq12r5k8fh5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
