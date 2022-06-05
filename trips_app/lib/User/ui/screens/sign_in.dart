@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trips_app/widgets/gradient_background.dart';
+import 'package:trips_app/widgets/button_green.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -23,15 +24,22 @@ class _SignIn extends State<SignIn> {
             MediaQuery.of(context).size.height,
           ),
           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 "Welcome \n This is your Travel App",
                 style: TextStyle(
                   fontSize: 37.0,
-                  fontFamily: 'Lato-Regular',
+                  fontFamily: 'Lato',
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
+              ),
+              ButtonGreen(
+                text: "Login with Gmail",
+                onPressed: () {},
+                width: 300.0,
+                height: 50.0,
               ),
             ],
           ),

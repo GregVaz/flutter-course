@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-    
+
 class Button extends StatelessWidget {
   String buttonText = "Navigate";
 
@@ -9,7 +9,8 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     final inkWellButton = InkWell(
       onTap: () {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Navegando")));
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Navegando")));
       },
       child: Container(
         height: 50.0,
@@ -17,10 +18,7 @@ class Button extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30.0),
           gradient: LinearGradient(
-            colors: [
-              Color(0xFF4268D3),
-              Color(0xFF584CD1)
-            ],
+            colors: [Color(0xFF4268D3), Color(0xFF584CD1)],
             begin: FractionalOffset(0.2, 0.0),
             end: FractionalOffset(1.0, 0.6),
             stops: [0.0, 0.6],
@@ -41,13 +39,8 @@ class Button extends StatelessWidget {
     );
 
     return Container(
-      margin: EdgeInsets.only(
-        top: 30.0,
-        left: 20.0,
-        right: 20.0
-      ),
+      margin: EdgeInsets.only(top: 30.0, left: 20.0, right: 20.0),
       child: inkWellButton,
     );
   }
-  
 }
