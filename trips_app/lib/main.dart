@@ -4,6 +4,7 @@ import 'package:trips_app/User/bloc/bloc_user.dart';
 import 'trips_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:trips_app/User/ui/screens/sign_in.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: TripsBar(),
+        home: SignIn(), // TripsBar(),
       ),
     );
   }
