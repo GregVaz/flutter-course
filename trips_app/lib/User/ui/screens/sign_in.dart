@@ -26,7 +26,7 @@ class _SignIn extends State<SignIn> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Welcome \n This is your Travel App",
                 style: TextStyle(
                   fontSize: 37.0,
