@@ -7,7 +7,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        GradientBackground("Popular", 250.0),
+        GradientBackground(height: 250.0),
         CardImageList(),
       ],
     );
