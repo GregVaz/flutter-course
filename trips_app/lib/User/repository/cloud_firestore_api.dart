@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../model/user.dart';
+import '../model/user_model.dart';
 
 class CloudFirestoreAPI {
   final String USER = "users";
@@ -8,7 +8,16 @@ class CloudFirestoreAPI {
 
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  void updateUserData(User user) async {
-    DocumentReference ref = _db.collection(USER).doc(user.id);
+  void updateUserData(UserModel user) async {
+    DocumentReference ref = _db.collection(USER).doc(user.uid);
+    return ref.set({
+      'uid': user.uid,
+      'name': user.name,
+      'email': user.email,
+      'photoURL': user.photoURL,
+      'myPlaces': user.myPlaces,
+      'myFavoritePlaces': user.myFavoritePlaces,
+      'lastSingIn': DateTime.now()
+    }, SetOptions(merge: true));
   }
 }

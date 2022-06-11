@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trips_app/User/bloc/bloc_user.dart';
+import 'package:trips_app/User/model/user_model.dart';
 import 'package:trips_app/trips_bar.dart';
 import 'package:trips_app/widgets/gradient_background.dart';
 import 'package:trips_app/widgets/button_green.dart';
@@ -58,7 +59,14 @@ class _SignIn extends State<SignIn> {
               ButtonGreen(
                 text: "Login with Gmail",
                 onPressed: () {
-                  userBloc.signIn().then((User? user) => print(user));
+                  userBloc.signIn().then((User? user) {
+                    userBloc.updateUserData(UserModel(
+                        uid: user?.uid ?? '',
+                        name: user?.displayName ?? '',
+                        email: user?.email ?? '',
+                        photoURL: user?.photoURL ?? '',
+                    ));
+                  });
                 },
                 width: 300.0,
                 height: 50.0,

@@ -1,4 +1,4 @@
-import '../../User/model/user.dart';
+import '../../User/model/user_model.dart';
 
 class Place {
   String id;
@@ -6,7 +6,7 @@ class Place {
   String description;
   String urlImage;
   int likes;
-  User userOwner;
+  // UserModel userOwner;
 
   Place({
     required this.id,
@@ -14,6 +14,6 @@ class Place {
     required this.description,
     required this.urlImage,
     this.likes = 0,
-    required this.userOwner
+    // required this.userOwner
   });
 }

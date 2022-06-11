@@ -3,11 +3,11 @@ import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:trips_app/User/bloc/bloc_user.dart';
 import 'package:trips_app/User/ui/widgets/user_info.dart';
 import 'package:trips_app/User/ui/widgets/button_bar.dart';
-import 'package:trips_app/User/model/user.dart';
+import 'package:trips_app/User/model/user_model.dart';
 
 class ProfileHeader extends StatelessWidget {
   late UserBloc userBloc;
-  late User user;
+  late UserModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class ProfileHeader extends StatelessWidget {
         ),
       );
     } else {
-      user = User(name: snapshot.data.displayName, email: snapshot.data.email, photoURL: snapshot.data.photoURL);
+      user = UserModel(uid: snapshot.data.uid, name: snapshot.data.displayName, email: snapshot.data.email, photoURL: snapshot.data.photoURL);
       return Container(
         margin: EdgeInsets.only(left: 20.0, right: 20.0, top: 50.0),
         child: Column(

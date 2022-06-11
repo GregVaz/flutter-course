@@ -1,7 +1,7 @@
 import 'package:trips_app/Place/model/place.dart';
 
-class User {
-  final String id;
+class UserModel {
+  final String uid;
   final String name;
   final String email;
   final String photoURL;
@@ -11,8 +11,8 @@ class User {
   // myFavoritePlaces
   // myPlaces
 
-  User({
-    required this.id,
+  UserModel({
+    required this.uid,
     required this.name,
     required this.email,
     required this.photoURL,

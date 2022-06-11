@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:trips_app/User/model/user.dart';
+import 'package:trips_app/User/model/user_model.dart';
 
 class UserInfo extends StatelessWidget {
-  User user;
+  UserModel user;
 
   UserInfo(this.user);
 
