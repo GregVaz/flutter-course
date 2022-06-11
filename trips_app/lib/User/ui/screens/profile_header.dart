@@ -16,9 +16,6 @@ class ProfileHeader extends StatelessWidget {
     return StreamBuilder(
       stream: userBloc.streamFirebase,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        print("================");
-        print(snapshot.connectionState);
-        print("================");
         switch(snapshot.connectionState) {
           case ConnectionState.waiting:
             return CircularProgressIndicator();
