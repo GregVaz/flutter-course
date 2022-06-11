@@ -24,8 +24,10 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
+        print("DefaultFirebaseOptions have been configured for android");
         return android;
       case TargetPlatform.iOS:
+        print("DefaultFirebaseOptions have been configured for ios");
         return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
@@ -63,7 +65,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '756077842881',
     projectId: 'trips-flutter-app-512bf',
     storageBucket: 'trips-flutter-app-512bf.appspot.com',
-    iosClientId: '756077842881-u2o1punlgt7dde1ukkapqoirsoaf3it4.apps.googleusercontent.com',
+    iosClientId:
+        '756077842881-u2o1punlgt7dde1ukkapqoirsoaf3it4.apps.googleusercontent.com',
     iosBundleId: 'com.example.tripsApp',
   );
 }

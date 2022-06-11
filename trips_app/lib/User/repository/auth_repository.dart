@@ -3,5 +3,5 @@ import 'package:trips_app/User/repository/firebaseAuthAPI.dart';
 
 class AuthRepository {
   final _firebaseAuthAPI = FirebaseAuthAPI();
-  Future<UserCredential> signInFirebase() => _firebaseAuthAPI.signIn();
+  Future<User?> signInFirebase() => _firebaseAuthAPI.signIn();
 }
