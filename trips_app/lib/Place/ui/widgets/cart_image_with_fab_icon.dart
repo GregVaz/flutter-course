@@ -45,7 +45,7 @@ class CardImageWithFabIcon extends StatelessWidget {
     return Stack(
       alignment: Alignment(0.9, 1.1),
       children: [card, FloatingActionButtonGreen(
-        iconData: Icons.favorite,
+        iconData: iconData,
         onPressed: () {},
       )],
     );

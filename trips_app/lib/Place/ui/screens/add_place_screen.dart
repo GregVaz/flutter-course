@@ -33,7 +33,7 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
               Container(
                 padding: EdgeInsets.only(top: 25.0, left: 5.0),
                 child: SizedBox(
-                  height: 45.0,
+                  height: 40.0,
                   width: 45.0,
                   child: IconButton(
                     icon: Icon(Icons.keyboard_arrow_left, color: Colors.white, size: 45.0),
@@ -52,23 +52,24 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
             ],
           ),
           Container(
-            margin: EdgeInsets.only(top: 120, bottom: 20.0),
+            margin: EdgeInsets.only(bottom: 20.0),
             child: ListView(
               children: [
                 Container(
                   alignment: Alignment.center,
                   child: CardImageWithFabIcon(
                     pathImage: "assets/img/beach.jpg", //widget.image.path,
-                    iconData: Icons.camera,
+                    iconData: Icons.camera_alt_outlined,
                     onPressedFabIcon: () {
                       print("onPressedFabIcon");
                     },
                     height: 250.0,
                     width: 350.0,
+                    left: 0,
                   ),
                 ), // Foto
                 Container(
-                  margin: EdgeInsets.only(bottom: 20.0),
+                  margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
                   child: TextInput(
                       hintText: "Title",
                       inputType: TextInputType.text,
