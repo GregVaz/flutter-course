@@ -43,9 +43,7 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                   width: 45.0,
                   child: IconButton(
                     icon: Icon(Icons.keyboard_arrow_left, color: Colors.white, size: 45.0),
-                    onPressed: () => {
-                      Navigator.pop(context)
-                    },
+                    onPressed: () => Navigator.pop(context),
                   ),
                 )
               ),
@@ -58,7 +56,7 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
             ],
           ),
           Container(
-            margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
+            margin: EdgeInsets.only(top: 45.0, bottom: 20.0),
             child: ListView(
               children: [
                 Container(
