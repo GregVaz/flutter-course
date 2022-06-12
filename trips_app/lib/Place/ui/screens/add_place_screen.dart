@@ -11,9 +11,9 @@ import '../../model/place.dart';
 import '../widgets/title_input_location.dart';
 
 class AddPlaceScreen extends StatefulWidget {
-  // File image;
+  File image;
 
-  // AddPlaceScreen({ this.image });
+  AddPlaceScreen({ required this.image });
 
   @override
   State<StatefulWidget> createState() {
@@ -64,7 +64,7 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                 Container(
                   alignment: Alignment.center,
                   child: CardImageWithFabIcon(
-                    pathImage: "assets/img/beach.jpg", //widget.image.path,
+                    pathImage: widget.image.path,
                     iconData: Icons.camera_alt_outlined,
                     onPressedFabIcon: () {
                       print("onPressedFabIcon");
