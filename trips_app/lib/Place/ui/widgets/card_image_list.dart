@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'cart_image.dart';
+import 'cart_image_with_fab_icon.dart';
 
 class CardImageList extends StatelessWidget {
   @override
@@ -10,10 +10,26 @@ class CardImageList extends StatelessWidget {
         padding: EdgeInsets.all(25.0),
         scrollDirection: Axis.horizontal,
         children: [
-          CardImage("assets/img/beach.jpg"),
-          CardImage("assets/img/city.jpg"),
-          CardImage("assets/img/ground.jpg"),
-          CardImage("assets/img/rocks.jpg"),
+          CardImageWithFabIcon(
+            pathImage: "assets/img/beach.jpg",
+            onPressedFabIcon: () {},
+            iconData: Icons.favorite,
+          ),
+          CardImageWithFabIcon(
+              pathImage: "assets/img/city.jpg",
+            onPressedFabIcon: () {},
+            iconData: Icons.favorite,
+          ),
+          CardImageWithFabIcon(
+              pathImage: "assets/img/ground.jpg",
+            onPressedFabIcon: () {},
+            iconData: Icons.favorite,
+          ),
+          CardImageWithFabIcon(
+              pathImage: "assets/img/rocks.jpg",
+            onPressedFabIcon: () {},
+            iconData: Icons.favorite,
+          ),
         ],
       ),
     );

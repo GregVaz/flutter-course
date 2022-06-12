@@ -1,11 +1,16 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:trips_app/Place/ui/widgets/cart_image_with_fab_icon.dart';
 import 'package:trips_app/Place/ui/widgets/text_input.dart';
 import 'package:trips_app/widgets/gradient_background.dart';
 import 'package:trips_app/widgets/title_header.dart';
 import '../widgets/title_input_location.dart';
 
 class AddPlaceScreen extends StatefulWidget {
+  // File image;
+
+  // AddPlaceScreen({ this.image });
+
   @override
   State<StatefulWidget> createState() {
     return _AddPlaceScreen();
@@ -50,7 +55,18 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
             margin: EdgeInsets.only(top: 120, bottom: 20.0),
             child: ListView(
               children: [
-                Container(), // Foto
+                Container(
+                  alignment: Alignment.center,
+                  child: CardImageWithFabIcon(
+                    pathImage: "assets/img/beach.jpg", //widget.image.path,
+                    iconData: Icons.camera,
+                    onPressedFabIcon: () {
+                      print("onPressedFabIcon");
+                    },
+                    height: 250.0,
+                    width: 350.0,
+                  ),
+                ), // Foto
                 Container(
                   margin: EdgeInsets.only(bottom: 20.0),
                   child: TextInput(
