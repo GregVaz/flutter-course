@@ -1,7 +1,8 @@
 import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
-import 'package:trips_app/Place/bloc/bloc_place.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:trips_app/Place/ui/widgets/cart_image_with_fab_icon.dart';
 import 'package:trips_app/Place/ui/widgets/text_input.dart';
 import 'package:trips_app/User/bloc/bloc_user.dart';
@@ -30,7 +31,6 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
     final _controllerLocationPlace = TextEditingController();
 
     UserBloc userBloc = BlocProvider.of<UserBloc>(context);
-    PlaceBloc placeBloc = BlocProvider.of<PlaceBloc>(context);
 
     return Scaffold(
       body: Stack(
@@ -106,19 +106,26 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                       // obtenemos la url de la imagen
                       userBloc.currentUser.then((user) {
                         if (user != null) {
-
+                          String uid = user.uid;
+                          String path = "$uid/${DateTime.now().toString()}.jpg";
+                          userBloc.uploadFile(path, widget.image).then((UploadTask storageTask) {
+                            storageTask.then((TaskSnapshot snapshot) {
+                              snapshot.ref.getDownloadURL().then((imageUrl) {
+                                // guardamos la info en cloud firestore
+                                // Place object - title, description, url, userOwner, likes
+                                userBloc.updatePlaceData(Place(
+                                    name: _controllerTitlePLace.value.text,
+                                    description: _controllerDescriptionPlace.value.text,
+                                    likes: 0,
+                                    urlImage: imageUrl
+                                )).whenComplete(() {
+                                  print("Termino");
+                                  Navigator.pop(context);
+                                });
+                              });
+                            });
+                          });
                         }
-                      });
-                      // guardamos la info en cloud firestore
-                        // Place object - title, description, url, userOwner, likes
-                      userBloc.updatePlaceData(Place(
-                        name: _controllerTitlePLace.value.text,
-                        description: _controllerDescriptionPlace.value.text,
-                        likes: 0,
-                        urlImage: ''
-                      )).whenComplete(() {
-                        print("Termino");
-                        Navigator.pop(context);
                       });
                     },
                   )

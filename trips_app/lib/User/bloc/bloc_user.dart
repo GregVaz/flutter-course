@@ -1,9 +1,13 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:trips_app/Place/model/place.dart';
 import 'package:trips_app/User/repository/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:trips_app/User/repository/cloud_firestore_repository.dart';
 
+import '../../Place/repository/firebase_storage_repository.dart';
 import '../model/user_model.dart';
 
 class UserBloc implements Bloc {
@@ -23,6 +27,10 @@ class UserBloc implements Bloc {
   final _cloudFirestoreRepository = CloudFirestoreRepository();
   void updateUserData(UserModel user) => _cloudFirestoreRepository.updateUserDataFirestore(user);
   Future<void> updatePlaceData(Place place) => _cloudFirestoreRepository.updatePlaceDataFirestore(place);
+
+  //3. Uso de firebase storage
+  final _firebaseStorageRepository = FirebaseStorageRepository();
+  Future<UploadTask> uploadFile(String path, File image) => _firebaseStorageRepository.uploadFile(path, image);
 
   @override
   void dispose() {}
