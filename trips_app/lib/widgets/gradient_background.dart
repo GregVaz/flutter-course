@@ -36,7 +36,7 @@ class GradientBackground extends StatelessWidget {
           width: screenHeight,
           height: screenHeight,
           decoration: BoxDecoration(
-            color: Color.fromRGBO(0, 0, 0, 0.05),
+            color: Color.fromRGBO(0, 0, 0, 0.03),
             borderRadius: BorderRadius.circular(screenHeight / 2),
           ),
         ),

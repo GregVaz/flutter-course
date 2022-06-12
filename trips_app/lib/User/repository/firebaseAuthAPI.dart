@@ -26,7 +26,7 @@ class FirebaseAuthAPI {
     googleSignIn.signOut();
   }
 
-  Stream<User?> currentUser() {
+  Stream<User?> streamUserChanges() {
     return _auth.userChanges();
   }
 }

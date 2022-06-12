@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:trips_app/Place/bloc/bloc_place.dart';
 import 'package:trips_app/Place/ui/widgets/cart_image_with_fab_icon.dart';
 import 'package:trips_app/Place/ui/widgets/text_input.dart';
 import 'package:trips_app/User/bloc/bloc_user.dart';
@@ -29,6 +30,7 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
     final _controllerLocationPlace = TextEditingController();
 
     UserBloc userBloc = BlocProvider.of<UserBloc>(context);
+    PlaceBloc placeBloc = BlocProvider.of<PlaceBloc>(context);
 
     return Scaffold(
       body: Stack(
@@ -102,6 +104,11 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                     onPressed: () {
                       // firestorage
                       // obtenemos la url de la imagen
+                      userBloc.currentUser.then((user) {
+                        if (user != null) {
+
+                        }
+                      });
                       // guardamos la info en cloud firestore
                         // Place object - title, description, url, userOwner, likes
                       userBloc.updatePlaceData(Place(
