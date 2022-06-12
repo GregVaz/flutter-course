@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trips_app/Place/ui/widgets/text_input.dart';
 import 'package:trips_app/widgets/gradient_background.dart';
 import 'package:trips_app/widgets/title_header.dart';
+import '../widgets/title_input_location.dart';
 
 class AddPlaceScreen extends StatefulWidget {
   @override
@@ -16,6 +17,7 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
   Widget build(BuildContext context) {
     final _controllerTitlePLace = TextEditingController();
     final _controllerDescriptionPlace = TextEditingController();
+    final _controllerLocationPlace = TextEditingController();
 
     return Scaffold(
       body: Stack(
@@ -62,7 +64,15 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                   inputType: TextInputType.multiline,
                   controller: _controllerDescriptionPlace,
                   maxLines: 6,
-                )
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20.0),
+                  child: TextInputLocation(
+                      hintText: "Location",
+                      controller: _controllerLocationPlace,
+                      iconData: Icons.location_on
+                  ),
+                ),
               ],
             ),
           ),
