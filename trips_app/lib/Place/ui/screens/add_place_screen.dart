@@ -1,9 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:trips_app/Place/ui/widgets/cart_image_with_fab_icon.dart';
 import 'package:trips_app/Place/ui/widgets/text_input.dart';
+import 'package:trips_app/User/bloc/bloc_user.dart';
+import 'package:trips_app/widgets/button.dart';
 import 'package:trips_app/widgets/gradient_background.dart';
 import 'package:trips_app/widgets/title_header.dart';
+import '../../model/place.dart';
 import '../widgets/title_input_location.dart';
 
 class AddPlaceScreen extends StatefulWidget {
@@ -23,6 +27,8 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
     final _controllerTitlePLace = TextEditingController();
     final _controllerDescriptionPlace = TextEditingController();
     final _controllerLocationPlace = TextEditingController();
+
+    UserBloc userBloc = BlocProvider.of<UserBloc>(context);
 
     return Scaffold(
       body: Stack(
@@ -89,6 +95,27 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
                       controller: _controllerLocationPlace,
                       iconData: Icons.location_on
                   ),
+                ),
+                Container(
+                  width: 70.0,
+                  child: Button(
+                    buttonText: "Add Place",
+                    onPressed: () {
+                      // firestorage
+                      // obtenemos la url de la imagen
+                      // guardamos la info en cloud firestore
+                        // Place object - title, description, url, userOwner, likes
+                      userBloc.updatePlaceData(Place(
+                        name: _controllerTitlePLace.value.text,
+                        description: _controllerDescriptionPlace.value.text,
+                        likes: 0,
+                        urlImage: ''
+                      )).whenComplete(() {
+                        print("Termino");
+                        Navigator.pop(context);
+                      });
+                    },
+                  )
                 ),
               ],
             ),
