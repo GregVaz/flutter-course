@@ -9,6 +9,7 @@ class CardImageWithFabIcon extends StatelessWidget {
   double left;
   VoidCallback onPressedFabIcon;
   IconData iconData;
+  bool resourceFromCamera;
 
   CardImageWithFabIcon({
     required this.pathImage,
@@ -16,11 +17,13 @@ class CardImageWithFabIcon extends StatelessWidget {
     this.width = 250.0,
     this.left = 20.0,
     required this.onPressedFabIcon,
-    required this.iconData
+    required this.iconData,
+    this.resourceFromCamera = false
   });
 
   @override
   Widget build(BuildContext context) {
+
     final card = Container(
       height: height,
       width: width,
@@ -31,10 +34,9 @@ class CardImageWithFabIcon extends StatelessWidget {
       decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: FileImage(File(pathImage)),
-              // pathImage.contains('assets') ?
-              // AssetImage(pathImage) :
-              // FileImage(File(pathImage)),
+            image: resourceFromCamera ?
+              FileImage(File(pathImage)) :
+              AssetImage(pathImage) as ImageProvider
           ),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           boxShadow: <BoxShadow>[
@@ -48,10 +50,13 @@ class CardImageWithFabIcon extends StatelessWidget {
 
     return Stack(
       alignment: Alignment(0.9, 1.1),
-      children: [card, FloatingActionButtonGreen(
-        iconData: iconData,
-        onPressed: () {},
-      )],
+      children: [
+        card,
+        FloatingActionButtonGreen(
+          iconData: iconData,
+          onPressed: () {},
+        ),
+      ],
     );
   }
 }

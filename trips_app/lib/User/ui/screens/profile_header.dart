@@ -12,7 +12,7 @@ class ProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     userBloc = BlocProvider.of<UserBloc>(context);
-    
+
     return StreamBuilder(
       stream: userBloc.streamFirebase,
       builder: (BuildContext context, AsyncSnapshot snapshot) {

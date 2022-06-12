@@ -58,13 +58,14 @@ class _AddPlaceScreen extends State<AddPlaceScreen> {
             ],
           ),
           Container(
-            margin: EdgeInsets.only(bottom: 20.0),
+            margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
             child: ListView(
               children: [
                 Container(
                   alignment: Alignment.center,
                   child: CardImageWithFabIcon(
                     pathImage: widget.image.path,
+                    resourceFromCamera: true,
                     iconData: Icons.camera_alt_outlined,
                     onPressedFabIcon: () {
                       print("onPressedFabIcon");

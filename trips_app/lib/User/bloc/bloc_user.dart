@@ -10,7 +10,7 @@ class UserBloc implements Bloc {
   final _authRepository = AuthRepository();
 
   // flujo de datos - stream (firebase)
-  Stream<User?> streamFirebase = FirebaseAuth.instance.authStateChanges();
+  Stream<User?> streamFirebase = FirebaseAuth.instance.userChanges();
   Stream<User?> get authStatus => streamFirebase;
 
   // Casos de uso del objeto User
