@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:trips_app/Place/ui/widgets/cart_image_with_fab_icon.dart';
 import 'package:trips_app/Place/ui/widgets/text_input.dart';
 import 'package:trips_app/User/bloc/bloc_user.dart';

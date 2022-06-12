@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../Place/model/place.dart';
 import '../model/user_model.dart';
@@ -25,16 +26,23 @@ class CloudFirestoreAPI {
   }
 
   Future<void> updatePlaceDate(Place place) async {
-    DocumentReference ref = _db.collection(PLACE).doc();
+    CollectionReference<Map<String, dynamic>> ref = _db.collection(PLACE);
     User? user  = _auth.currentUser;
     DocumentReference _userRef = _db.collection(USER).doc(user?.uid);
 
-    await ref.set({
+    await ref.add({
       'name': place.name,
       'description': place.description,
       'urlImage': place.urlImage,
       'likes': 0,
       'userOwner': _userRef
+    }).then((DocumentReference docRef) {
+      docRef.get().then((DocumentSnapshot snapshot) {
+        DocumentReference refUsers = _db.collection(USER).doc(user?.uid);
+        refUsers.update({
+          'myPlaces': FieldValue.arrayUnion([snapshot.reference])
+        });
+      });
     });
   }
 }
