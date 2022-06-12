@@ -4,6 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../Place/model/place.dart';
 import '../model/user_model.dart';
+import '../ui/widgets/profile_place.dart';
 
 class CloudFirestoreAPI {
   final String USER = "users";
@@ -44,5 +45,23 @@ class CloudFirestoreAPI {
         });
       });
     });
+  }
+
+  Stream<QuerySnapshot> placesCollection() {
+    return _db.collection(PLACE).snapshots();
+  }
+
+  List<ProfilePlace> buildPlaces(List<DocumentSnapshot> placesListSnapshot) {
+    List<ProfilePlace> profilePlaces = <ProfilePlace>[];
+    placesListSnapshot.forEach((place) {
+      profilePlaces.add(ProfilePlace(
+        Place(
+          name: place['name'],
+          description: place['description'],
+          urlImage: place['urlImage'],
+        )
+      ));
+    });
+    return profilePlaces;
   }
 }

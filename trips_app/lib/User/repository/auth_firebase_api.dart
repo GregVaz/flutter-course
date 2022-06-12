@@ -29,4 +29,6 @@ class FirebaseAuthAPI {
   Stream<User?> streamUserChanges() {
     return _auth.userChanges();
   }
+
+
 }

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:trips_app/Place/model/place.dart';
@@ -9,6 +10,7 @@ import 'package:trips_app/User/repository/cloud_firestore_repository.dart';
 
 import '../../Place/repository/firebase_storage_repository.dart';
 import '../model/user_model.dart';
+import '../ui/widgets/profile_place.dart';
 
 class UserBloc implements Bloc {
   final _authRepository = AuthRepository();
@@ -27,6 +29,12 @@ class UserBloc implements Bloc {
   final _cloudFirestoreRepository = CloudFirestoreRepository();
   void updateUserData(UserModel user) => _cloudFirestoreRepository.updateUserDataFirestore(user);
   Future<void> updatePlaceData(Place place) => _cloudFirestoreRepository.updatePlaceDataFirestore(place);
+
+  // escuchar los cambios en firestore para los places
+  Stream<QuerySnapshot> placesListStream() => _cloudFirestoreRepository.placesCollectionFirestore();
+  Stream<QuerySnapshot> get placesStream => placesListStream();
+
+  List<ProfilePlace> buildPlaces(List<DocumentSnapshot> placesListSnapshot) => _cloudFirestoreRepository.buildPlaces(placesListSnapshot);
 
   //3. Uso de firebase storage
   final _firebaseStorageRepository = FirebaseStorageRepository();
