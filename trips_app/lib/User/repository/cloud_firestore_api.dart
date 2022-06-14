@@ -72,26 +72,44 @@ class CloudFirestoreAPI {
     return profilePlaces;
   }
 
-  List<CardImageWithFabIcon> buildPlaces(List<DocumentSnapshot> placesListSnapshot) {
-    List<CardImageWithFabIcon> placesCard = <CardImageWithFabIcon>[];
-    placesListSnapshot.forEach((place) {
-      placesCard.add(
-        CardImageWithFabIcon(
-          pathImage: place['urlImage'],
-          onPressedFabIcon: () {
-            likePlace(place.id);
-          },
-          iconData: Icons.favorite_outline,
-        )
+  List<Place> buildPlaces(List<DocumentSnapshot> placesListSnapshot, UserModel user) {
+    List<Place> places = <Place>[];
+
+    placesListSnapshot.forEach((place)  {
+      Place currentPlace = Place(
+          id: place.reference.id,
+          name: place["name"],
+          description: place["description"],
+          urlImage: place["urlImage"],
+          likes: place["likes"]
       );
+      List<DocumentReference> usersLikedRefs = List<DocumentReference>.from(place["usersLiked"]);
+      currentPlace.liked = false;
+      usersLikedRefs.forEach((drUL) {
+        if (user.uid == drUL.id) {
+          currentPlace.liked = true;
+        }
+      });
+      places.add(currentPlace);
     });
-    return placesCard;
+    return places;
   }
 
-  Future likePlace(String uidPlace) async {
-    await _db.runTransaction((transaction) async {
-      DocumentSnapshot placeDS = await _db.collection(this.PLACE).doc(uidPlace).get();
-      transaction.update(placeDS.reference, {"likes": placeDS['likes'] + 1});
+  Future likePlace(Place place, String uid) async {
+    await _db.collection(PLACE).doc(place.id).get()
+        .then((DocumentSnapshot ds){
+      int likes = ds["likes"];
+
+      DocumentReference _userRef = _db.collection(USER).doc(uid);
+
+      _db.collection(PLACE).doc(place.id)
+          .update({
+        'likes': place.liked ? likes+1 : likes-1,
+        'usersLiked':
+        place.liked?
+        FieldValue.arrayUnion([_userRef]):
+        FieldValue.arrayRemove([_userRef])
+      });
     });
   }
 }

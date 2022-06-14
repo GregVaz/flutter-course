@@ -3,7 +3,6 @@ import 'package:trips_app/Place/model/place.dart';
 import 'package:trips_app/User/model/user_model.dart';
 import 'package:trips_app/User/repository/cloud_firestore_api.dart';
 
-import '../../Place/ui/widgets/cart_image_with_fab_icon.dart';
 import '../ui/widgets/profile_place.dart';
 
 class CloudFirestoreRepository {
@@ -18,5 +17,6 @@ class CloudFirestoreRepository {
   Stream<QuerySnapshot> placesCollectionByUserIdFirestore(String uid) => _cloudFirestoreAPI.placesCollectionByUserId(uid);
 
   List<ProfilePlace> buildMyPlaces(List<DocumentSnapshot> placesListSnapshot) => _cloudFirestoreAPI.buildMyPlaces(placesListSnapshot);
-  List<CardImageWithFabIcon> buildPlaces(List<DocumentSnapshot> placesListSnapshot) => _cloudFirestoreAPI.buildPlaces(placesListSnapshot);
+  List<Place> buildPlaces(List<DocumentSnapshot> placesListSnapshot, UserModel user) => _cloudFirestoreAPI.buildPlaces(placesListSnapshot, user);
+  Future likePlace(Place place, String uid) => _cloudFirestoreAPI.likePlace(place, uid);
 }

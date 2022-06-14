@@ -12,8 +12,6 @@ import 'package:trips_app/Place/repository/firebase_storage_repository.dart';
 import 'package:trips_app/User/model/user_model.dart';
 import 'package:trips_app/User/ui/widgets/profile_place.dart';
 
-import '../../Place/ui/widgets/cart_image_with_fab_icon.dart';
-
 class UserBloc implements Bloc {
   final _authRepository = AuthRepository();
 
@@ -37,8 +35,8 @@ class UserBloc implements Bloc {
   Stream<QuerySnapshot> get placesStream => placesListStream();
 
   List<ProfilePlace> buildMyPlaces(List<DocumentSnapshot> placesListSnapshot) => _cloudFirestoreRepository.buildMyPlaces(placesListSnapshot);
-  List<CardImageWithFabIcon> buildPlaces(List<DocumentSnapshot> placesListSnapshot) => _cloudFirestoreRepository.buildPlaces(placesListSnapshot);
-
+  List<Place> buildPlaces(List<DocumentSnapshot> placesListSnapshot, UserModel user) => _cloudFirestoreRepository.buildPlaces(placesListSnapshot, user);
+  Future likePlace(Place place, String uid) => _cloudFirestoreRepository.likePlace(place, uid);
   // Get places by user uid
   Stream<QuerySnapshot> myPlacesListStream(String uid) => _cloudFirestoreRepository.placesCollectionByUserIdFirestore(uid);
 
