@@ -36,7 +36,7 @@ class CardImageWithFabIcon extends StatelessWidget {
             fit: BoxFit.cover,
             image: resourceFromCamera ?
               FileImage(File(pathImage)) :
-              AssetImage(pathImage) as ImageProvider
+              NetworkImage(pathImage) as ImageProvider
           ),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           boxShadow: <BoxShadow>[

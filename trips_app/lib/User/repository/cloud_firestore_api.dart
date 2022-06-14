@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 
-import '../../Place/model/place.dart';
-import '../model/user_model.dart';
-import '../ui/widgets/profile_place.dart';
+import 'package:trips_app/Place/model/place.dart';
+import 'package:trips_app/Place/ui/widgets/cart_image_with_fab_icon.dart';
+import 'package:trips_app/User/model/user_model.dart';
+import 'package:trips_app/User/ui/widgets/profile_place.dart';
 
 class CloudFirestoreAPI {
   final String USER = "users";
@@ -26,7 +27,7 @@ class CloudFirestoreAPI {
     }, SetOptions(merge: true));
   }
 
-  Future<void> updatePlaceDate(Place place) async {
+  Future<void> updatePlaceData(Place place) async {
     CollectionReference<Map<String, dynamic>> ref = _db.collection(PLACE);
     User? user  = _auth.currentUser;
     DocumentReference _userRef = _db.collection(USER).doc(user?.uid);
@@ -50,8 +51,13 @@ class CloudFirestoreAPI {
   Stream<QuerySnapshot> placesCollection() {
     return _db.collection(PLACE).snapshots();
   }
+  
+  Stream<QuerySnapshot> placesCollectionByUserId(String uid) {
+    DocumentReference _userRef = _db.collection(USER).doc(uid);
+    return _db.collection(PLACE).where("userOwner", isEqualTo: _userRef).snapshots();
+  }
 
-  List<ProfilePlace> buildPlaces(List<DocumentSnapshot> placesListSnapshot) {
+  List<ProfilePlace> buildMyPlaces(List<DocumentSnapshot> placesListSnapshot) {
     List<ProfilePlace> profilePlaces = <ProfilePlace>[];
     placesListSnapshot.forEach((place) {
       profilePlaces.add(ProfilePlace(
@@ -63,5 +69,20 @@ class CloudFirestoreAPI {
       ));
     });
     return profilePlaces;
+  }
+
+  List<CardImageWithFabIcon> buildPlaces(List<DocumentSnapshot> placesListSnapshot) {
+    List<CardImageWithFabIcon> placesCard = <CardImageWithFabIcon>[];
+    placesListSnapshot.forEach((place) {
+      placesCard.add(
+        CardImageWithFabIcon(
+          pathImage: place['urlImage'],
+          onPressedFabIcon: () {},
+          iconData: Icons.favorite_outline,
+        )
+      );
+    });
+
+    return placesCard;
   }
 }
