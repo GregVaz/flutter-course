@@ -65,6 +65,7 @@ class CloudFirestoreAPI {
           name: place['name'],
           description: place['description'],
           urlImage: place['urlImage'],
+          likes: place['likes'],
         )
       ));
     });
@@ -77,12 +78,20 @@ class CloudFirestoreAPI {
       placesCard.add(
         CardImageWithFabIcon(
           pathImage: place['urlImage'],
-          onPressedFabIcon: () {},
+          onPressedFabIcon: () {
+            likePlace(place.id);
+          },
           iconData: Icons.favorite_outline,
         )
       );
     });
-
     return placesCard;
+  }
+
+  Future likePlace(String uidPlace) async {
+    await _db.runTransaction((transaction) async {
+      DocumentSnapshot placeDS = await _db.collection(this.PLACE).doc(uidPlace).get();
+      transaction.update(placeDS.reference, {"likes": placeDS['likes'] + 1});
+    });
   }
 }
